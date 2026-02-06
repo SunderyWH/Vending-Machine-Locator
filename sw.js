@@ -1,14 +1,20 @@
-const cacheName = "vending-machine-cache-v1";
-const filesToCache = ["/", "/index.html", "/logo.png"];
+const cacheName = "vmlocator-v1";
 
-self.addEventListener("install", (event) => {
+const filesToCache = [
+  "./",
+  "./index.html",
+  "./manifest.json",
+  "./logo.png"
+];
+
+self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(cacheName).then((cache) => cache.addAll(filesToCache))
+    caches.open(cacheName).then(cache => cache.addAll(filesToCache))
   );
 });
 
-self.addEventListener("fetch", (event) => {
+self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request).then((response) => response || fetch(event.request))
+    caches.match(event.request).then(res => res || fetch(event.request))
   );
 });
