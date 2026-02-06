@@ -1,4 +1,5 @@
-"PYA034": {
+const machines = {
+    "PYA034": {
       location: "CJCC",
       map: "https://maps.app.goo.gl/No1mgRLVrkK3JSog9?g_st=ic"
     },
