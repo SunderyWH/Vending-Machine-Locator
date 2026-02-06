@@ -1,35 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Vending Locator</title>
+<title>Vending Machine Locator</title>
 <meta name="viewport" content="width=device-width">
 
 <link rel="stylesheet" href="style.css">
-
-<!-- QR Scanner -->
-<script src="https://unpkg.com/html5-qrcode"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="controls">
-  <button onclick="toggleDark()">🌙</button>
-  <button onclick="toggleLang()">EN / KH</button>
-</div>
+  <!-- LOGO -->
+  <img src="logo.png" class="logo" alt="Company Logo">
 
-<h2 id="title">Vending Machine Locator</h2>
+  <div class="controls">
+    <button onclick="toggleDark()">🌙</button>
+    <button onclick="toggleLang()">EN / KH</button>
+  </div>
 
-<input id="machineInput" placeholder="Enter machine number">
+  <h2 id="title">Vending Machine Locator</h2>
 
-<button onclick="findLocation()">Find Location</button>
+  <input id="machineInput" placeholder="Enter machine number">
 
-<div id="result" class="result"></div>
+  <button onclick="findLocation()">Find Location</button>
 
-<h3>📷 QR Scan</h3>
-<div id="reader" style="width:250px;margin:auto;"></div>
+  <div id="result" class="result"></div>
 
 </div>
 
