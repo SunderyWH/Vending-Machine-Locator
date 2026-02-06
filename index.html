@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Vending Machine Locator | ស្វែងរកទីតាំងម៉ាស៊ីន</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#007bff">
 
   <!-- Khmer Font -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer&display=swap" rel="stylesheet">
@@ -180,6 +182,12 @@
   document.getElementById("machineInput").addEventListener("keydown", function(e) {
     if (e.key === "Enter") findLocation();
   });
+
+  if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js")
+    .then(() => console.log("Service Worker registered"))
+    .catch((err) => console.log("Service Worker failed:", err));
+}
 </script>
 
 </body>
