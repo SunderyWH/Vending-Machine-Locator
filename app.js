@@ -1,19 +1,19 @@
 let machines = {};
 let lang = "EN";
 
-// Load cloud DB
+// Load cloud database
 fetch("data.json")
   .then(res => res.json())
   .then(data => machines = data);
 
-// AUTO SEARCH while typing
+// Auto search while typing
 document.getElementById("machineInput").addEventListener("input", ()=>{
-  if(document.getElementById("machineInput").value.length >= 3){
+  if(document.getElementById("machineInput").value.length >= 2){
     findLocation();
   }
 });
 
-// MAIN SEARCH
+// Search function
 function findLocation(){
   const input = document.getElementById("machineInput").value.trim().toUpperCase();
   const result = document.getElementById("result");
@@ -25,38 +25,26 @@ function findLocation(){
 
   if(machines[input]){
     const m = machines[input];
-    result.className="result success";
+    result.className = "result success";
     result.innerHTML = `
       <b>${lang==="EN"?"Location":"ទីតាំង"}:</b> ${m.location}<br><br>
       <a href="${m.map}" target="_blank">📍 Google Maps</a>
     `;
   } else {
-    result.className="result error";
-    result.innerHTML = lang==="EN" ? "Not found" : "រកមិនឃើញ";
+    result.className = "result error";
+    result.innerHTML = lang==="EN" ? "Machine not found" : "រកមិនឃើញម៉ាស៊ីន";
   }
 }
 
-// DARK MODE
+// Dark mode
 function toggleDark(){
   document.body.classList.toggle("dark");
 }
 
-// LANGUAGE TOGGLE
+// Language toggle
 function toggleLang(){
-  lang = lang==="EN" ? "KH" : "EN";
-  document.getElementById("title").innerHTML = 
-    lang==="EN" ? "Vending Machine Locator" : "ស្វែងរកទីតាំងម៉ាស៊ីន";
+  lang = lang === "EN" ? "KH" : "EN";
+  document.getElementById("title").innerText =
+    lang === "EN" ? "Vending Machine Locator" : "ស្វែងរកទីតាំងម៉ាស៊ីន";
   findLocation();
 }
-
-// QR SCANNER
-const qr = new Html5Qrcode("reader");
-
-qr.start(
-  { facingMode: "environment" },
-  { fps:10, qrbox:200 },
-  text=>{
-    document.getElementById("machineInput").value = text;
-    findLocation();
-  }
-);
