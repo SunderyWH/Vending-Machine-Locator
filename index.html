@@ -238,6 +238,43 @@
       map: "https://maps.app.goo.gl/wuVdWjx9BpnkTfxE9"
     }
   };
+  function findLocation() {
+    const input = document.getElementById("machineInput").value.trim().toUpperCase();
+    const resultDiv = document.getElementById("result");
+
+    resultDiv.className = "result";
+
+    if (!input) {
+      resultDiv.classList.add("error");
+      resultDiv.innerHTML = "⚠️ Please enter a machine number<br>សូមបញ្ចូលលេខម៉ាស៊ីន";
+      return;
+    }
+
+    if (machines[input]) {
+      const machine = machines[input];
+      resultDiv.classList.add("success");
+      resultDiv.innerHTML = `
+        <strong>Machine:</strong> ${input}<br>
+        <strong>Location:</strong> ${machine.location}<br><br>
+        <a href="${machine.map}" target="_blank" rel="noopener">
+          📍 Open in Google Maps
+        </a>
+      `;
+    } else {
+      resultDiv.classList.add("error");
+      resultDiv.innerHTML = "❌ Machine number not found<br>រកមិនឃើញលេខម៉ាស៊ីន";
+    }
+  }
+
+  // Button click
+  document.getElementById("searchBtn").addEventListener("click", findLocation);
+
+  // Enter key
+  document.getElementById("machineInput").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+      findLocation();
+    }
+  });
 <script src="app.js"></script>
 </body>
 </html>
