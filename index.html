@@ -19,6 +19,7 @@ body{
   color: #fff; /* default text color white for visibility */
 }
 .container{
+  
   max-width:800px;
   margin:40px auto;
   background:#ffffff; /* keep container white for contrast */
@@ -65,17 +66,27 @@ a{color:#007bff;font-weight:bold;text-decoration:none;}
 
 <div class="container">
 
-<img src="logo.png" class="logo">
+  <!-- SPLASH / WELCOME SCREEN -->
+  <div id="splash">
+    <img src="logo.png" class="logo">
+    <h2>Vending Machine Locator</h2>
+    <p>Loading...</p>
+  </div>
 
-<h2>
-Vending Machine Locator<br>ស្វែងរកទីតាំងម៉ាស៊ីន
-</h2>
+  <!-- MAIN APP -->
+  <div id="mainApp" style="display:none;">
 
-<input id="machineInput" placeholder="Enter Machine Number (eg. PYA034)">
+    <img src="logo.png" class="logo">
 
-<button id="searchBtn">Find Location</button>
+    <h2>
+      Vending Machine Locator<br>ស្វែងរកទីតាំងម៉ាស៊ីន
+    </h2>
 
-<div id="result" class="result"></div>
+    <input id="machineInput" placeholder="Enter Machine Number (eg. PYA034)">
+    <button id="searchBtn">Find Location</button>
+    <div id="result" class="result"></div>
+
+  </div>
 
 </div>
 
